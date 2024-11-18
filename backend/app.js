@@ -1,3 +1,4 @@
+// app.js
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -19,5 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/twits', twitRoutes);
+
+// Servir arquivos estáticos do diretório "public"
+app.use(express.static('public'));
 
 module.exports = app;

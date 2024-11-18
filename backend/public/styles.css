@@ -1,0 +1,197 @@
+/* Definição da paleta de cores */
+:root {
+    --turquesa: #00AE9D;
+    --verde-escuro: #003641;
+    --branco: #fff;
+    --roxo: #49479D;
+    --verde-medio: #7DB61C;
+    --verde-claro: #C9D200;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--branco);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--verde-escuro);
+}
+
+/* Cabeçalho da Aplicação */
+.app-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.app-header h1 {
+    color: var(--turquesa);
+    font-size: 32px;
+    margin: 0;
+}
+
+/* Formulários de Autenticação */
+.auth-form {
+    margin-bottom: 20px;
+}
+
+.auth-form h2 {
+    color: var(--roxo);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.auth-form input,
+.auth-form button {
+    width: 100%;
+}
+
+.toggle-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.toggle-link a {
+    color: var(--turquesa);
+    text-decoration: none;
+}
+
+.toggle-link a:hover {
+    text-decoration: underline;
+}
+
+/* Inputs e Textareas */
+input,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--turquesa);
+    border-radius: 5px;
+    background-color: var(--branco);
+    color: var(--verde-escuro);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--roxo);
+}
+
+/* Botões */
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--turquesa);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: var(--verde-medio);
+}
+
+/* Saudação ao Usuário */
+.user-greeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-greeting p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.user-greeting #user-name {
+    font-weight: bold;
+    color: var(--roxo);
+}
+
+/* Formulário de Twit */
+.twit-form-container {
+    margin-bottom: 20px;
+}
+
+.twit-form-container textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* Lista de Twits */
+#twits-container {
+    margin-bottom: 20px;
+}
+
+.twit {
+    background-color: var(--verde-claro);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.twit .author {
+    font-weight: bold;
+    color: var(--verde-escuro);
+    margin-bottom: 5px;
+}
+
+/* Botão de Logout */
+#logout-button {
+    background-color: var(--roxo);
+    color: var(--branco);
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    width: auto;
+    padding: 10px 20px;
+}
+
+#logout-button:hover {
+    background-color: var(--turquesa);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .app-header h1 {
+        font-size: 28px;
+    }
+
+    .user-greeting {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #logout-button {
+        margin-top: 10px;
+        width: 100%;
+    }
+}

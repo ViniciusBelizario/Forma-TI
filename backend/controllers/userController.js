@@ -1,4 +1,5 @@
-const User = require('../models/User');
+// controllers/userController.js
+const { User } = require('../models');
 
 exports.getUserProfile = async (req, res) => {
     try {
@@ -10,6 +11,7 @@ exports.getUserProfile = async (req, res) => {
         }
         res.json(user);
     } catch (error) {
+        console.error('Erro ao obter perfil do usuário:', error);
         res.status(500).json({ message: 'Erro ao obter perfil do usuário', error });
     }
 };

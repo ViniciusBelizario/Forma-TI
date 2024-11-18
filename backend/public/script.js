@@ -1,5 +1,5 @@
 // URL base da API
-const API_URL = ''; // Deixe vazio quando o frontend estiver sendo servido pelo backend
+const API_URL = ''; // Vazio porque o frontend e o backend compartilham a mesma origem
 
 // Elementos do DOM
 const registerForm = document.getElementById('register-form');
@@ -10,6 +10,9 @@ const twitsContainer = document.getElementById('twits-container');
 const registerSection = document.getElementById('register-section');
 const loginSection = document.getElementById('login-section');
 const twitsSection = document.getElementById('twits-section');
+const showLoginLink = document.getElementById('show-login');
+const showRegisterLink = document.getElementById('show-register');
+const userNameDisplay = document.getElementById('user-name');
 
 // Verifica se o usuário está logado ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,6 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         showAuthSections();
     }
+});
+
+// Manipuladores para alternar entre os formulários
+showLoginLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerSection.style.display = 'none';
+    loginSection.style.display = 'block';
+});
+
+showRegisterLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginSection.style.display = 'none';
+    registerSection.style.display = 'block';
 });
 
 // Manipulador do formulário de registro
@@ -44,6 +60,8 @@ registerForm.addEventListener('submit', async (e) => {
         if (response.ok) {
             alert(data.message);
             registerForm.reset();
+            registerSection.style.display = 'none';
+            loginSection.style.display = 'block';
         } else {
             const errorMsg = data.message || data.errors[0].msg;
             alert(`Erro: ${errorMsg}`);
@@ -146,11 +164,16 @@ function showTwitsSection() {
     registerSection.style.display = 'none';
     loginSection.style.display = 'none';
     twitsSection.style.display = 'block';
+
+    // Decodificar o token JWT para obter o nome de usuário
+    const token = localStorage.getItem('token');
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    userNameDisplay.textContent = payload.username;
 }
 
 function showAuthSections() {
     registerSection.style.display = 'block';
-    loginSection.style.display = 'block';
+    loginSection.style.display = 'none';
     twitsSection.style.display = 'none';
 }
 

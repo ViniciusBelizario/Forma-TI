@@ -4,8 +4,8 @@ const User = require('./User');
 const Twit = require('./Twit');
 
 // Definir associações
-User.hasMany(Twit, { foreignKey: 'userId' });
-Twit.belongsTo(User, { foreignKey: 'userId' });
+User.hasMany(Twit, { foreignKey: 'userId', as: 'twits' });
+Twit.belongsTo(User, { foreignKey: 'userId', as: 'User' });
 
 sequelize.sync({ alter: true })
     .then(() => {
